@@ -42,9 +42,9 @@ X_scaled = pd.DataFrame(scaler.fit_transform(X_engineered), columns=X_engineered
 
 X_train, X_test, y_train, y_test = train_test_split(X_scaled, y, test_size=0.15, random_state=42)
 
-print("\n--- Training ExtraTrees Classifier --- ")
-print("(This algorithm builds hundreds of randomized trees and is highly effective on noisy signals)")
-model = ExtraTreesClassifier(n_estimators=400, max_depth=35, min_samples_split=2, n_jobs=-1, random_state=42)
+print("\n--- Training Smaller ExtraTrees Classifier --- ")
+print("(Optimized for smaller file size to fit GitHub's 25MB upload limit)")
+model = ExtraTreesClassifier(n_estimators=30, max_depth=15, min_samples_split=2, n_jobs=-1, random_state=42)
 model.fit(X_train, y_train)
 
 y_predictions = model.predict(X_test)
